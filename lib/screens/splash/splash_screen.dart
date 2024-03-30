@@ -37,12 +37,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text("Deafult"),
+        title: const Text("Default"),
       ),
       body: Center(
         child: TextButton(
           onPressed: () {},
-          child: const Text("LoTTIE QO"),
+          child: const Text(""),
         ),
       ),
     );
