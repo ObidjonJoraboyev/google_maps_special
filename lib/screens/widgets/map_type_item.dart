@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_nt_ten/view_models/maps_view_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+
+import '../../view_models/maps_view_model.dart';
 
 class MapTypeItem extends StatelessWidget {
   const MapTypeItem({super.key});

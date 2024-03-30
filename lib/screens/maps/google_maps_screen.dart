@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_nt_ten/screens/addresses/addresses_screen.dart';
-import 'package:flutter_nt_ten/utils/images/app_images.dart';
-import 'package:flutter_nt_ten/utils/styles/app_text_style.dart';
-import 'package:flutter_nt_ten/view_models/maps_view_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/models/place_category.dart';
 import '../../data/models/place_model.dart';
+import '../../utils/images/app_images.dart';
+import '../../utils/styles/app_text_style.dart';
 import '../../view_models/addresses_view_model.dart';
+import '../../view_models/maps_view_model.dart';
+import '../addresses/addresses_screen.dart';
 import '../widgets/map_type_item.dart';
 import 'dialogs/addressDetailDialog.dart';
 
@@ -39,7 +39,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AddressesScreen()));
+                          builder: (context) => const AddressesScreen()));
                 },
                 icon: const Row(
                   children: [

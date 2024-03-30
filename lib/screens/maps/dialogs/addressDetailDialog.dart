@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-
+import '../../../data/local/local_database.dart';
+import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
-addressDetailDialog({
-  required BuildContext context,
-  required ValueChanged<PlaceModel> placeModel,
-  required String defaultName
-}) {
+import '../../addresses/addresses_screen.dart';
+
+addressDetailDialog(
+    {required BuildContext context,
+    required ValueChanged<PlaceModel> placeModel,
+    required String defaultName}) {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController flatNumber = TextEditingController();
   final TextEditingController orient = TextEditingController();
   final TextEditingController entrance = TextEditingController();
   final TextEditingController stage = TextEditingController();
-  nameController.text=defaultName;
+  nameController.text = defaultName;
   showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -176,18 +178,21 @@ addressDetailDialog({
                       ),
                     );
 
-                    LocalDatabase.insertPlace(   PlaceModel(
-                      entrance: entrance.text,
-                      flatNumber: flatNumber.text,
-                      orientAddress: orient.text,
-                      placeCategory: PlaceCategory.home,
-                      lat: 0,
-                      long: 0,
-                      placeName: nameController.text,
-                      stage: stage.text,
-                    ),);
-                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return AddressesScreen();
+                    LocalDatabase.insertPlace(
+                      PlaceModel(
+                        entrance: entrance.text,
+                        flatNumber: flatNumber.text,
+                        orientAddress: orient.text,
+                        placeCategory: PlaceCategory.home,
+                        lat: 0,
+                        long: 0,
+                        placeName: nameController.text,
+                        stage: stage.text,
+                      ),
+                    );
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const AddressesScreen();
                     }));
                   },
                   child: const Text(

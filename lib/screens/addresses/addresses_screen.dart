@@ -55,7 +55,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                       .read<AddressesViewModel>()
                                       .deleteAddress(myAddress);
                                 },
-                                icon: Icon(Icons.cancel_outlined)),
+                                icon: const Icon(Icons.cancel_outlined)),
                             leading: SizedBox(
                               width: 40,
                               height: 45,

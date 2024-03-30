@@ -86,13 +86,12 @@ class MapsViewModel extends ChangeNotifier {
 
     markers.add(
       Marker(
-        position: LatLng(placeModel.lat,placeModel.long),
+        position: LatLng(placeModel.lat, placeModel.long),
         infoWindow: InfoWindow(
           title: placeModel.placeName,
           snippet: placeModel.placeCategory.name,
         ),
-        //BitmapDescriptor.defaultMarker,
-        icon: BitmapDescriptor.fromBytes(markerImage!),
+        icon: BitmapDescriptor.fromBytes(markerImage),
         markerId: MarkerId(DateTime.now().toString()),
       ),
     );

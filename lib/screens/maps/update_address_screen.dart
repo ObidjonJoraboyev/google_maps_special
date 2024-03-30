@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_nt_ten/data/models/place_category.dart';
-import 'package:flutter_nt_ten/data/models/place_model.dart';
-import 'package:flutter_nt_ten/screens/maps/dialogs/addressDetailDialog.dart';
-import 'package:flutter_nt_ten/screens/widgets/map_type_item.dart';
-import 'package:flutter_nt_ten/utils/images/app_images.dart';
-import 'package:flutter_nt_ten/utils/styles/app_text_style.dart';
-import 'package:flutter_nt_ten/view_models/addresses_view_model.dart';
-import 'package:flutter_nt_ten/view_models/maps_view_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import '../../data/models/place_category.dart';
+import '../../data/models/place_model.dart';
+import '../../utils/images/app_images.dart';
+import '../../utils/styles/app_text_style.dart';
+import '../../view_models/addresses_view_model.dart';
+import '../../view_models/maps_view_model.dart';
+import '../widgets/map_type_item.dart';
+import 'dialogs/addressDetailDialog.dart';
 
 class UpdateAddressScreen extends StatefulWidget {
   const UpdateAddressScreen({
@@ -28,7 +28,8 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
     context.read<MapsViewModel>().currentPlaceName =
         widget.placeModel.placeName;
 
-    context.read<MapsViewModel>().setLatInitialLong(LatLng(widget.placeModel.lat, widget.placeModel.long));
+    context.read<MapsViewModel>().setLatInitialLong(
+        LatLng(widget.placeModel.lat, widget.placeModel.long));
     super.initState();
   }
 
@@ -110,7 +111,8 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                   place.placeCategory = PlaceCategory.work;
                   context.read<AddressesViewModel>().addNewAddress(place);
                   Navigator.pop(context);
-                }, defaultName: '',
+                },
+                defaultName: '',
               );
             },
             child: const Icon(Icons.place),

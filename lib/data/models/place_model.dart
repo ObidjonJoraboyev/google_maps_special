@@ -1,5 +1,4 @@
-import 'package:flutter_nt_ten/data/models/place_category.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_special/data/models/place_category.dart';
 
 class PlaceModel {
   PlaceModel({
