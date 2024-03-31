@@ -3,7 +3,7 @@ import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
 import '../../addresses/addresses_screen.dart';
-int incrementId = 0;
+int incrementId = -1;
 
 addressDetailDialog(
     {required BuildContext context,
@@ -167,6 +167,7 @@ addressDetailDialog(
               const SizedBox(height: 4),
               TextButton(
                   onPressed: () {
+                    incrementId++;
                     placeModel.call(
                       PlaceModel(
                         entrance: entrance.text,
@@ -194,7 +195,6 @@ addressDetailDialog(
                     );
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) {
-                      incrementId++;
                       return AddressesScreen(
                         placeModel: PlaceModel(
                           id: incrementId,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_special/screens/maps/dialogs/addressDetailDialog.dart';
 import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
@@ -217,6 +218,7 @@ PlaceModel addressDetailDialogForUpdate(
       flatNumber: flatNumber.text,
       orientAddress: orient.text,
       stage: stage.text,
+      id: incrementId,
       lat: placeModelInitial.lat,
       long: placeModelInitial.long);
 }
