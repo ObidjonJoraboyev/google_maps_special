@@ -17,6 +17,7 @@ class UpdateAddressScreen extends StatefulWidget {
     required this.placeModel,
     required this.index,
   });
+
   final int index;
   final PlaceModel placeModel;
 
@@ -84,7 +85,8 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                   cameraPosition = currentCameraPosition;
                 },
                 mapType: viewModel.mapType,
-                initialCameraPosition: viewModel.initialCameraPosition,
+                initialCameraPosition: viewModel.initialCameraPosition ??
+                    const CameraPosition(target: LatLng(0, 0)),
                 onMapCreated: (GoogleMapController createdController) {
                   viewModel.controller.complete(createdController);
                 },

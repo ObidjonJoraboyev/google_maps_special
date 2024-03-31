@@ -22,7 +22,7 @@ class MapsViewModel extends ChangeNotifier {
 
   MapType mapType = MapType.normal;
 
-  late CameraPosition initialCameraPosition;
+   CameraPosition? initialCameraPosition;
   late CameraPosition currentCameraPosition;
   Set<Marker> markers = {};
 
@@ -44,7 +44,7 @@ class MapsViewModel extends ChangeNotifier {
   moveToInitialPosition() async {
     final GoogleMapController mapController = await controller.future;
     await mapController
-        .animateCamera(CameraUpdate.newCameraPosition(initialCameraPosition));
+        .animateCamera(CameraUpdate.newCameraPosition(initialCameraPosition??CameraPosition(target: LatLng(0,0))));
   }
 
   changeCurrentCameraPosition(CameraPosition cameraPosition) async {

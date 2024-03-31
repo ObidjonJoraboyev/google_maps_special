@@ -70,7 +70,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                   cameraPosition = currentCameraPosition;
                 },
                 mapType: viewModel.mapType,
-                initialCameraPosition: viewModel.initialCameraPosition,
+                initialCameraPosition: viewModel.initialCameraPosition??CameraPosition(target: LatLng(12,12)),
                 onMapCreated: (GoogleMapController createdController) {
                   viewModel.controller.complete(createdController);
                 },
