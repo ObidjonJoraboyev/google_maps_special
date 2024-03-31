@@ -186,18 +186,17 @@ PlaceModel addressDetailDialogForUpdate(
                       ),
                     );
 
-                    LocalDatabase.insertPlace(
-                      PlaceModel(
+                    LocalDatabase.updatePlace(PlaceModel(
+                        placeCategory: PlaceCategory.home,
+                        placeName: defaultName,
                         entrance: entrance.text,
                         flatNumber: flatNumber.text,
                         orientAddress: orient.text,
-                        placeCategory: PlaceCategory.home,
-                        lat: 0,
-                        long: 0,
-                        placeName: nameController.text,
                         stage: stage.text,
-                      ),
-                    );
+                        id: placeModelInitial.id,
+                        lat: placeModelInitial.lat,
+                        long: placeModelInitial.long));
+
 
                     Navigator.pop(context);
                   },
@@ -218,7 +217,7 @@ PlaceModel addressDetailDialogForUpdate(
       flatNumber: flatNumber.text,
       orientAddress: orient.text,
       stage: stage.text,
-      id: incrementId,
+      id: placeModelInitial.id,
       lat: placeModelInitial.lat,
       long: placeModelInitial.long);
 }

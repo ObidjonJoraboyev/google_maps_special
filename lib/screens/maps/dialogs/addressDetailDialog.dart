@@ -3,7 +3,6 @@ import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
 import '../../addresses/addresses_screen.dart';
-int incrementId = -1;
 
 addressDetailDialog(
     {required BuildContext context,
@@ -14,6 +13,8 @@ addressDetailDialog(
   TextEditingController orient = TextEditingController();
   TextEditingController entrance = TextEditingController();
   TextEditingController stage = TextEditingController();
+
+  int incrementId =0;
 
   nameController.text = defaultName;
   showModalBottomSheet(
