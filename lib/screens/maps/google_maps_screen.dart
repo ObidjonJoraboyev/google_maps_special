@@ -39,7 +39,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AddressesScreen()));
+                          builder: (context) => AddressesScreen()));
                 },
                 icon: const Row(
                   children: [

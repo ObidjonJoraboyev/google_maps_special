@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
-import '../../addresses/addresses_screen.dart';
 
-addressDetailDialog(
-    {required BuildContext context,
+PlaceModel addressDetailDialogForUpdate(
+    {required PlaceModel placeModelInitial,
+    required BuildContext context,
     required ValueChanged<PlaceModel> placeModel,
     required String defaultName}) {
   TextEditingController nameController = TextEditingController();
@@ -14,7 +14,12 @@ addressDetailDialog(
   TextEditingController entrance = TextEditingController();
   TextEditingController stage = TextEditingController();
 
-  int incrementId = 0;
+  nameController.text = placeModelInitial.placeName;
+  flatNumber.text = placeModelInitial.flatNumber;
+  orient.text = placeModelInitial.orientAddress;
+  entrance.text = placeModelInitial.entrance;
+  stage.text = placeModelInitial.stage;
+
   nameController.text = defaultName;
   showModalBottomSheet(
       context: context,
@@ -30,7 +35,7 @@ addressDetailDialog(
                 height: 15,
               ),
               const Text(
-                "Add Address",
+                "Update Address",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
               ),
               const SizedBox(
@@ -192,23 +197,8 @@ addressDetailDialog(
                         stage: stage.text,
                       ),
                     );
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) {
-                      incrementId++;
-                      return AddressesScreen(
-                        placeModel: PlaceModel(
-                          id: incrementId,
-                          entrance: entrance.text,
-                          flatNumber: flatNumber.text,
-                          orientAddress: orient.text,
-                          placeCategory: PlaceCategory.home,
-                          lat: 0,
-                          long: 0,
-                          placeName: nameController.text,
-                          stage: stage.text,
-                        ),
-                      );
-                    }));
+
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     "Save",
@@ -219,4 +209,14 @@ addressDetailDialog(
           ),
         );
       });
+
+  return PlaceModel(
+      placeCategory: PlaceCategory.home,
+      placeName: defaultName,
+      entrance: entrance.text,
+      flatNumber: flatNumber.text,
+      orientAddress: orient.text,
+      stage: stage.text,
+      lat: placeModelInitial.lat,
+      long: placeModelInitial.long);
 }

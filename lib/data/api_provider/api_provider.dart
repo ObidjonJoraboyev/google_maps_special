@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class ApiProvider {
   static Future<String> getPlaceNameByLocation(LatLng latLng) async {
-    String place = "Hudud noma'lum";
+    String place = "Not Found";
 
     Uri uri = Uri.https("geocode-maps.yandex.ru", "/1.x/", {
       "apikey": "437a6264-75a2-4284-a1b1-ccbfe6dbec94",
@@ -27,7 +27,7 @@ class ApiProvider {
       if (list != null && list.isNotEmpty) {
         String? placeName = list[0]["GeoObject"]["metaDataProperty"]
             ["GeocoderMetaData"]["text"];
-        place = placeName ?? "Hudud noma'lum";
+        place = placeName ?? "Not Found";
       }
     }
     return place;

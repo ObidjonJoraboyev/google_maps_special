@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_special/data/models/place_model.dart';
+import 'package:google_maps_special/screens/maps/google_maps_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/local/local_database.dart';
@@ -7,18 +9,14 @@ import '../../view_models/addresses_view_model.dart';
 import '../maps/update_address_screen.dart';
 
 class AddressesScreen extends StatefulWidget {
-  const AddressesScreen({super.key});
+  AddressesScreen({super.key, this.placeModel});
+  PlaceModel? placeModel;
 
   @override
   State<AddressesScreen> createState() => _AddressesScreenState();
 }
 
 class _AddressesScreenState extends State<AddressesScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +41,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                   builder: (context) {
                                     return UpdateAddressScreen(
                                       placeModel: myAddress,
+                                      index: index,
                                     );
                                   },
                                 ),
@@ -50,7 +49,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                             },
                             trailing: IconButton(
                                 onPressed: () {
-                                  LocalDatabase.deleteItem(1);
+                                  LocalDatabase.deleteItem(myAddress.id ?? 1);
                                   context
                                       .read<AddressesViewModel>()
                                       .deleteAddress(myAddress);
@@ -95,7 +94,11 @@ class _AddressesScreenState extends State<AddressesScreen> {
               color: Colors.orangeAccent,
             ),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const GoogleMapsScreen();
+                }));
+              },
               child: const Text(
                 "Add Address",
                 style: TextStyle(

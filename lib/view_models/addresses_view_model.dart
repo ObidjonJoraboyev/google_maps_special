@@ -29,4 +29,9 @@ class AddressesViewModel extends ChangeNotifier {
     myAddresses.remove(placeModel);
     notifyListeners();
   }
+
+  updateAddress({required int index, required PlaceModel placeModel}) {
+    myAddresses[index] = placeModel;
+    notifyListeners();
+  }
 }
