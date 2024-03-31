@@ -10,6 +10,7 @@ import '../maps/update_address_screen.dart';
 
 class AddressesScreen extends StatefulWidget {
   AddressesScreen({super.key, this.placeModel});
+
   PlaceModel? placeModel;
 
   @override
@@ -65,7 +66,8 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                           ? "assets/icons/work.svg"
                                           : "assets/icons/other.svg"),
                             ),
-                            subtitle: Text(myAddress.orientAddress),
+                            subtitle: Text(
+                                "${myAddress.orientAddress}${myAddress.id}"),
                             title: Text(myAddress.placeName)),
                         Container(
                           width: double.infinity,
@@ -95,7 +97,8 @@ class _AddressesScreenState extends State<AddressesScreen> {
             ),
             child: InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
                   return const GoogleMapsScreen();
                 }));
               },

@@ -13,7 +13,7 @@ class PlaceModel {
     this.id,
   });
 
-  final int? id;
+   int? id;
   double lat;
   double long;
   final String placeName;
@@ -44,7 +44,7 @@ class PlaceModel {
         orientAddress: json["place_orientAddress"] as String? ?? "",
         stage: json["place_stage"] as String? ?? "",
         lat: double.parse(json["place_lat"] as String? ?? "0.0"),
-        id: json["place_id"] as int? ?? 0,
+        id: json["place_id"] as int? ?? 1,
         long: double.parse(json["place_long"] as String? ?? "0.0"));
   }
 

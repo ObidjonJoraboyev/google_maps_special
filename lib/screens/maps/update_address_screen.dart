@@ -287,7 +287,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                                 context
                                     .read<AddressesViewModel>()
                                     .updateAddress(
-                                        placeModel: place, index: widget.index);
+                                        placeModel: place, index: widget.index!=0?widget.index:1);
                                 Navigator.pop(context);
                               },
                               defaultName: activeIndex == 1

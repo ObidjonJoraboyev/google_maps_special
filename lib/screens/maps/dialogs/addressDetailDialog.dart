@@ -3,6 +3,7 @@ import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
 import '../../addresses/addresses_screen.dart';
+int incrementId = 0;
 
 addressDetailDialog(
     {required BuildContext context,
@@ -14,7 +15,6 @@ addressDetailDialog(
   TextEditingController entrance = TextEditingController();
   TextEditingController stage = TextEditingController();
 
-  int incrementId = 0;
   nameController.text = defaultName;
   showModalBottomSheet(
       context: context,
@@ -176,7 +176,7 @@ addressDetailDialog(
                         lat: 0,
                         long: 0,
                         placeName: nameController.text,
-                        stage: stage.text,
+                        stage: stage.text, id: incrementId,
                       ),
                     );
 
@@ -189,7 +189,7 @@ addressDetailDialog(
                         lat: 0,
                         long: 0,
                         placeName: nameController.text,
-                        stage: stage.text,
+                        stage: stage.text, id: incrementId,
                       ),
                     );
                     Navigator.pushReplacement(context,
