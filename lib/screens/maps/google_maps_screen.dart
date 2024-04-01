@@ -86,15 +86,23 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                 top: 40,
                 right: 0,
                 left: 0,
-                child: Text(
-                  viewModel.currentPlaceName,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyle.interSemiBold.copyWith(
-                      fontSize: 24,
-                      color: Colors.white,
-                      shadows: [
-                        const Shadow(color: Colors.black, blurRadius: 40)
-                      ]),
+                child: Column(
+                  children: [
+                    Text(
+                      viewModel.currentPlaceName,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle.interSemiBold.copyWith(
+                          fontSize: 24,
+                          color: Colors.white,
+                          shadows: [
+                            const Shadow(color: Colors.black, blurRadius: 40)
+                          ]),
+                    ),
+
+
+
+                    Text("${viewModel.currentCameraPosition.target.latitude}",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w600),)
+                  ],
                 ),
               ),
               Positioned(
@@ -268,11 +276,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                                   .addNewAddress(place);
                               Navigator.pop(context);
                             },
-                            defaultName: activeIndex == 1
-                                ? "Home"
-                                : activeIndex == 2
-                                    ? "Work"
-                                    : "Other",
+                            defaultName: viewModel.currentPlaceName,
                           );
                         },
                         child: Text(

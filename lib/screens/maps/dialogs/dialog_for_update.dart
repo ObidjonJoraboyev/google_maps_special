@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_special/screens/maps/dialogs/addressDetailDialog.dart';
+import 'package:provider/provider.dart';
 import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
+import '../../../view_models/maps_view_model.dart';
 
 PlaceModel addressDetailDialogForUpdate(
     {required PlaceModel placeModelInitial,
@@ -179,8 +180,9 @@ PlaceModel addressDetailDialogForUpdate(
                         flatNumber: flatNumber.text,
                         orientAddress: orient.text,
                         placeCategory: PlaceCategory.home,
-                        lat: 0,
-                        long: 0,
+                        lat: context.read<MapsViewModel>().currentCameraPosition.target.latitude,
+                        long: context.read<MapsViewModel>().currentCameraPosition.target.longitude,
+                        id: placeModelInitial.id,
                         placeName: nameController.text,
                         stage: stage.text,
                       ),
@@ -194,11 +196,13 @@ PlaceModel addressDetailDialogForUpdate(
                         orientAddress: orient.text,
                         stage: stage.text,
                         id: placeModelInitial.id,
-                        lat: placeModelInitial.lat,
-                        long: placeModelInitial.long));
+                        lat: context.read<MapsViewModel>().currentCameraPosition.target.latitude,
+                        long: context.read<MapsViewModel>().currentCameraPosition.target.longitude));
 
 
                     Navigator.pop(context);
+
+
                   },
                   child: const Text(
                     "Save",
@@ -218,6 +222,6 @@ PlaceModel addressDetailDialogForUpdate(
       orientAddress: orient.text,
       stage: stage.text,
       id: placeModelInitial.id,
-      lat: placeModelInitial.lat,
-      long: placeModelInitial.long);
+      lat: context.watch<MapsViewModel>().currentCameraPosition.target.latitude,
+      long: context.watch<MapsViewModel>().currentCameraPosition.target.longitude);
 }

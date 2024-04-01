@@ -22,8 +22,9 @@ class MapsViewModel extends ChangeNotifier {
 
   MapType mapType = MapType.normal;
 
-   CameraPosition? initialCameraPosition;
-  late CameraPosition currentCameraPosition;
+  CameraPosition? initialCameraPosition;
+  CameraPosition currentCameraPosition =
+      const CameraPosition(target: LatLng(0, 0));
   Set<Marker> markers = {};
 
   List<PlaceModel> myAddresses = [];
@@ -43,8 +44,8 @@ class MapsViewModel extends ChangeNotifier {
 
   moveToInitialPosition() async {
     final GoogleMapController mapController = await controller.future;
-    await mapController
-        .animateCamera(CameraUpdate.newCameraPosition(initialCameraPosition??CameraPosition(target: LatLng(0,0))));
+    await mapController.animateCamera(CameraUpdate.newCameraPosition(
+        initialCameraPosition ?? CameraPosition(target: LatLng(0, 0))));
   }
 
   changeCurrentCameraPosition(CameraPosition cameraPosition) async {

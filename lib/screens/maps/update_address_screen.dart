@@ -85,8 +85,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                   cameraPosition = currentCameraPosition;
                 },
                 mapType: viewModel.mapType,
-                initialCameraPosition: viewModel.initialCameraPosition ??
-                    const CameraPosition(target: LatLng(0, 0)),
+                initialCameraPosition:CameraPosition(target: LatLng(widget.placeModel.lat,widget.placeModel.long)),
                 onMapCreated: (GoogleMapController createdController) {
                   viewModel.controller.complete(createdController);
                 },

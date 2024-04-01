@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_special/view_models/addresses_view_model.dart';
+import 'package:google_maps_special/view_models/maps_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../data/local/local_database.dart';
 import '../../../data/models/place_category.dart';
 import '../../../data/models/place_model.dart';
@@ -182,32 +185,38 @@ addressDetailDialog(
                       ),
                     );
 
+
+                  double lat=  context.read<MapsViewModel>().currentCameraPosition.target.latitude;
+                  double lon=  context.read<MapsViewModel>().currentCameraPosition.target.latitude;
                     LocalDatabase.insertPlace(
                       PlaceModel(
                         entrance: entrance.text,
                         flatNumber: flatNumber.text,
                         orientAddress: orient.text,
                         placeCategory: PlaceCategory.home,
-                        lat: 0,
-                        long: 0,
+                        lat: lat,
+                        long:lon,
                         placeName: nameController.text,
                         stage: stage.text, id: incrementId,
                       ),
                     );
+
+                    context.read<AddressesViewModel>().get();
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) {
+
                       return AddressesScreen(
-                        placeModel: PlaceModel(
-                          id: incrementId,
-                          entrance: entrance.text,
-                          flatNumber: flatNumber.text,
-                          orientAddress: orient.text,
-                          placeCategory: PlaceCategory.home,
-                          lat: 0,
-                          long: 0,
-                          placeName: nameController.text,
-                          stage: stage.text,
-                        ),
+                        //placeModel: PlaceModel(
+                        //                           id: incrementId,
+                        //                           entrance: entrance.text,
+                        //                           flatNumber: flatNumber.text,
+                        //                           orientAddress: orient.text,
+                        //                           placeCategory: PlaceCategory.home,
+                        //                           lat: context.watch<MapsViewModel>().currentCameraPosition.target.latitude,
+                        //                           long: context.watch<MapsViewModel>().currentCameraPosition.target.longitude,
+                        //                           placeName: nameController.text,
+                        //                           stage: stage.text,
+                        //                         ),
                       );
                     }));
                   },

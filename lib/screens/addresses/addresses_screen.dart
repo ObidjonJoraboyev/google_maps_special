@@ -66,7 +66,8 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                           ? "assets/icons/work.svg"
                                           : "assets/icons/other.svg"),
                             ),
-                            subtitle: Text(myAddress.orientAddress),
+                            subtitle: Text(
+                                "${myAddress.orientAddress} ${myAddress.lat}"),
                             title: Text(myAddress.placeName)),
                         Container(
                           width: double.infinity,
