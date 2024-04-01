@@ -10,6 +10,7 @@ class AddressesViewModel extends ChangeNotifier {
 
   get() async {
     myAddresses = await LocalDatabase.getAllItems();
+    notifyListeners();
   }
 
   List<PlaceModel> myAddresses = [];
@@ -31,7 +32,9 @@ class AddressesViewModel extends ChangeNotifier {
   }
 
   updateAddress({required int index, required PlaceModel placeModel}) {
+    print(myAddresses);
     myAddresses[index] = placeModel;
+
     notifyListeners();
   }
 }
